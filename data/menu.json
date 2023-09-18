@@ -1,0 +1,338 @@
+[
+    {
+        "name": "Carrot soup",
+        "recipe": "Sautéed breaded veal escalope with watercress, lemon and veal jus.",
+        "image": "https://i.postimg.cc/dQRzhz90/soup-1.png",
+        "category": "soup",
+        "price": 9.5
+    },
+    {
+        "name": "Insalata Caprese",
+        "recipe": "Chargrilled fresh tuna steak (served medium rare) on classic Niçoise salad with French beans.",
+        "image": "https://i.postimg.cc/hGkVRZzF/salad-1.png",
+        "category": "salad",
+        "price": 14.7
+    },
+    {
+        "name": "Cheese Pizza",
+        "recipe": "Pan roasted haddock fillet wrapped in smoked French bacon with pea purée and tomato and chive vinaigrette",
+        "image": "https://i.postimg.cc/Kz577rzd/pizza-1.png",
+        "category": "pizza",
+        "price": 12.5
+    },
+    {
+        "name": "Turkey burger",
+        "recipe": "Chargrilled chicken with avocado, baby gem lettuce, baby spinach, shallots, French beans, walnuts, croutons and a mustard dressing",
+        "image": "https://i.postimg.cc/hvy5sqvW/burger-1.png",
+        "category": "burger",
+        "price": 12.9
+    },
+    {
+        "name": "Black Forest cake",
+        "recipe": "Pan roasted pork belly with gratin potato, braised Savoy cabbage, apples, thyme and calvados jus",
+        "image": "https://i.postimg.cc/pLqgC7GB/dessert-1.png",
+        "category": "dessert",
+        "price": 20.5
+    },
+    {
+        "name": "Long black",
+        "recipe": "Chargrilled fresh tuna steak (served medium rare) on classic Niçoise salad with French beans.",
+        "image": "https://i.postimg.cc/fRRwMY1B/coffee-1.png",
+        "category": "coffee",
+        "price": 14.7
+    },
+    {
+        "name": "Chicken Salad",
+        "recipe": "Roasted duck breast (served pink) with gratin potato and a griottine cherry sauce",
+        "image": "https://i.postimg.cc/T2B8zjCr/Screenshot-11.png",
+        "category": "popular",
+        "price": 12.5
+    },
+    {
+        "name": "Tuna Niçoise",
+        "recipe": "Warm goats cheese and roasted vegetable salad with black olive tapenade crostini",
+        "image": "https://cristianonew.ukrdevs.com/wp-content/uploads/2016/08/product-2-370x247.jpg",
+        "category": "offered",
+        "price": 10.5
+    },
+    {
+        "name": "Mushroom burger",
+        "recipe": "Chargrilled chicken with avocado, baby gem lettuce, baby spinach, shallots, French beans, walnuts, croutons and a mustard dressing",
+        "image": "https://i.postimg.cc/5NQ3TzkF/burger-2.png",
+        "category": "burger",
+        "price": 9.5
+    },
+    {
+        "name": "Selat solo",
+        "recipe": "Pan roasted pork belly with gratin potato, braised Savoy cabbage, apples, thyme and calvados jus",
+        "image": "https://i.postimg.cc/KvGBbMzY/salad-2.png",
+        "category": "salad",
+        "price": 13.5
+    },
+    {
+        "name": "Lobster stew",
+        "recipe": "Pan roasted haddock fillet wrapped in smoked French bacon with pea purée and tomato and chive vinaigrette",
+        "image": "https://i.postimg.cc/GmZCFvT3/soup-2.png",
+        "category": "soup",
+        "price": 12.5
+    },
+    {
+        "name": "Veggie Pizza",
+        "recipe": "Sautéed breaded veal escalope with watercress, lemon and veal jus.",
+        "image": "https://i.postimg.cc/xT8GHmS4/pizza-2.png",
+        "category": "pizza",
+        "price": 9.5
+    },
+    {
+        "name": "Flat white",
+        "recipe": "Chargrilled fresh tuna steak (served medium rare) on classic Niçoise salad with French beans.",
+        "image": "https://i.postimg.cc/1R0P6WQv/coffee-2.png",
+        "category": "coffee",
+        "price": 16.7
+    },
+    {
+        "name": "Escalope desserts",
+        "recipe": "Roasted duck breast (served pink) with gratin potato and a griottine cherry sauce",
+        "image": "https://i.postimg.cc/dVrZyywP/desserts.png",
+        "category": "popular",
+        "price": 20.5
+    },
+    {
+        "name": "Chocolate cake",
+        "recipe": "Roasted duck breast (served pink) with gratin potato and a griottine cherry sauce",
+        "image": "https://i.postimg.cc/yNDrPNSV/dessert-2.png",
+        "category": "dessert",
+        "price": 18.5
+    },
+    {
+        "name": "Veggie burger",
+        "recipe": "Pan roasted pork belly with gratin potato, braised Savoy cabbage, apples, thyme and calvados jus",
+        "image": "https://i.postimg.cc/8sgrq7jh/burger-3.png",
+        "category": "burger",
+        "price": 8.5
+    },
+    {
+        "name": "Superfood Salad",
+        "recipe": "Pan roasted pork belly with gratin potato, braised Savoy cabbage, apples, thyme and calvados jus",
+        "image": "https://i.postimg.cc/FszzGgz0/salad-3.png",
+        "category": "salad",
+        "price": 10.5
+    },
+    {
+        "name": "Americano",
+        "recipe": "Chargrilled fresh tuna steak (served medium rare) on classic Niçoise salad with French beans.",
+        "image": "https://i.postimg.cc/v8vFDcrj/coffee-3.png",
+        "category": "coffee",
+        "price": 12.7
+    },
+    {
+        "name": "Beer soup",
+        "recipe": "Sautéed breaded veal escalope with watercress, lemon and veal jus.",
+        "image": "https://i.postimg.cc/KvjSC0nv/soup-3.png",
+        "category": "soup",
+        "price": 8.5
+    },
+    {
+        "name": "Roasted Pork Belly",
+        "recipe": "Roasted duck breast (served pink) with gratin potato and a griottine cherry sauce",
+        "image": "https://i.postimg.cc/635f53rJ/drinks.png",
+        "category": "popular",
+        "price": 14.5
+    },
+    {
+        "name": "Coffee Doppio",
+        "recipe": "Chargrilled fresh tuna steak (served medium rare) on classic Niçoise salad with French beans.",
+        "image": "https://i.postimg.cc/T20FfBGv/coffee-4.png",
+        "category": "coffee",
+        "price": 18.7
+    },
+    {
+        "name": "Pepperoni Pizza",
+        "recipe": "Chargrilled chicken with avocado, baby gem lettuce, baby spinach, shallots, French beans, walnuts, croutons and a mustard dressing",
+        "image": "https://i.postimg.cc/kDPnn8Ng/pizza-3.png",
+        "category": "pizza",
+        "price": 14.9
+    },
+    {
+        "name": "Roast Duck Breast",
+        "recipe": "Roasted duck breast (served pink) with gratin potato and a griottine cherry sauce",
+        "image": "https://cristianonew.ukrdevs.com/wp-content/uploads/2016/08/product-4-370x247.jpg",
+        "category": "offered",
+        "price": 14.5
+    },
+    {
+        "name": "Coffee cake",
+        "recipe": "Sautéed breaded veal escalope with watercress, lemon and veal jus.",
+        "image": "https://i.postimg.cc/dtWBxYFD/dessert-3.png",
+        "category": "dessert",
+        "price": 16.5
+    },
+    {
+        "name": "Cheese burger",
+        "recipe": "Chargrilled chicken with avocado, baby gem lettuce, baby spinach, shallots, French beans, walnuts, croutons and a mustard dressing",
+        "image": "https://i.postimg.cc/0NXcK1tL/burger-4.png",
+        "category": "burger",
+        "price": 6.5
+    },
+    {
+        "name": "Bob chorba",
+        "recipe": "Pan roasted pork belly with gratin potato, braised Savoy cabbage, apples, thyme and calvados jus",
+        "image": "https://i.postimg.cc/SKDG0fLk/soup-4.png",
+        "category": "soup",
+        "price": 13.5
+    },
+    {
+        "name": "Flat white",
+        "recipe": "Chargrilled fresh tuna steak (served medium rare) on classic Niçoise salad with French beans.",
+        "image": "https://i.postimg.cc/xdLp74g7/coffee-5.png",
+        "category": "coffee",
+        "price": 12.7
+    },
+    {
+        "name": "Papaya Salad",
+        "recipe": "Sautéed breaded veal escalope with watercress, lemon and veal jus.",
+        "image": "https://i.postimg.cc/wvMZnvm4/salad-4.png",
+        "category": "salad",
+        "price": 12.5
+    },
+    {
+        "name": "Heavy cake",
+        "recipe": "Pan roasted haddock fillet wrapped in smoked French bacon with pea purée and tomato and chive vinaigrette",
+        "image": "https://i.postimg.cc/wjCDCxGx/dessert-4.png",
+        "category": "dessert",
+        "price": 14.5
+    },
+    {
+        "name": "Fish Parmentier",
+        "recipe": "Roasted duck breast (served pink) with gratin potato and a griottine cherry sauce",
+        "image": "https://i.postimg.cc/cJdQXH5g/soups.png",
+        "category": "popular",
+        "price": 18.5
+    },
+    {
+        "name": "Meat Pizza",
+        "recipe": "Chargrilled fresh tuna steak (served medium rare) on classic Niçoise salad with French beans.",
+        "image": "https://i.postimg.cc/KYCc9dKT/pizza-4.png",
+        "category": "pizza",
+        "price": 13.7
+    },
+    {
+        "name": "Roasted Pork Belly",
+        "recipe": "Chargrilled chicken with avocado, baby gem lettuce, baby spinach, shallots, French beans, walnuts, croutons and a mustard dressing",
+        "image": "https://i.postimg.cc/Sxdp5jsC/burger-5.png",
+        "category": "burger",
+        "price": 10.5
+    },
+    {
+        "name": "Chicken and Walnut Salad",
+        "recipe": "Pan roasted pork belly with gratin potato, braised Savoy cabbage, apples, thyme and calvados jus",
+        "image": "https://cristianonew.ukrdevs.com/wp-content/uploads/2016/08/product-3-370x247.jpg",
+        "category": "offered",
+        "price": 13.5
+    },
+    {
+        "name": "Coffee mocha",
+        "recipe": "Chargrilled fresh tuna steak (served medium rare) on classic Niçoise salad with French beans.",
+        "image": "https://i.postimg.cc/NfVN0czS/coffee-6.png",
+        "category": "coffee",
+        "price": 18.7
+    },
+    {
+        "name": "Spicy Pasta",
+        "recipe": "Sautéed breaded veal escalope with watercress, lemon and veal jus.",
+        "image": "https://i.postimg.cc/FHm98ysP/salad-5.png",
+        "category": "salad",
+        "price": 9.5
+    },
+    {
+        "name": "Garash cake",
+        "recipe": "Warm goats cheese and roasted vegetable salad with black olive tapenade crostini",
+        "image": "https://i.postimg.cc/cH9CNXL7/dessert-5.png",
+        "category": "dessert",
+        "price": 10.5
+    },
+    {
+        "name": "Escalope de Veau",
+        "recipe": "Roasted duck breast (served pink) with gratin potato and a griottine cherry sauce",
+        "image": "https://i.postimg.cc/0yPfHczy/burger.png",
+        "category": "popular",
+        "price": 10.5
+    },
+    {
+        "name": "Squash bisque",
+        "recipe": "Sautéed breaded veal escalope with watercress, lemon and veal jus.",
+        "image": "https://i.postimg.cc/zvRwgmsG/soup-5.png",
+        "category": "soup",
+        "price": 14.5
+    },
+    {
+        "name": "Margherita Pizza",
+        "recipe": "Chargrilled chicken with avocado, baby gem lettuce, baby spinach, shallots, French beans, walnuts, croutons and a mustard dressing",
+        "image": "https://i.postimg.cc/jqHqX3RW/pizza-5.png",
+        "category": "pizza",
+        "price": 16.9
+    },
+    {
+        "name": "Bean burger",
+        "recipe": "Roasted duck breast (served pink) with gratin potato and a griottine cherry sauce",
+        "image": "https://i.postimg.cc/Y2FB7d0p/burger-6.png",
+        "category": "burger",
+        "price": 12.5
+    },
+    {
+        "name": "Instant coffee",
+        "recipe": "Chargrilled fresh tuna steak (served medium rare) on classic Niçoise salad with French beans.",
+        "image": "https://i.postimg.cc/5yrmjBnL/coffee-7.png",
+        "category": "coffee",
+        "price": 14.7
+    },
+    {
+        "name": "Escalope de Veau",
+        "recipe": "Pan roasted haddock fillet wrapped in smoked French bacon with pea purée and tomato and chive vinaigrette",
+        "image": "https://cristianonew.ukrdevs.com/wp-content/uploads/2016/08/product-2-370x247.jpg",
+        "category": "offered",
+        "price": 12.5
+    },
+    {
+        "name": "Esterházy torte",
+        "recipe": "Pan roasted haddock fillet wrapped in smoked French bacon with pea purée and tomato and chive vinaigrette",
+        "image": "https://i.postimg.cc/qv4NytS3/dessert-6.png",
+        "category": "dessert",
+        "price": 12.5
+    },
+    {
+        "name": "Hawaiian Pizza",
+        "recipe": "Chargrilled chicken with avocado, baby gem lettuce, baby spinach, shallots, French beans, walnuts, croutons and a mustard dressing",
+        "image": "https://i.postimg.cc/YSFBSj94/pizza-6.png",
+        "category": "pizza",
+        "price": 12.9
+    },
+    {
+        "name": "Asparagus Salad",
+        "recipe": "Roasted duck breast (served pink) with gratin potato and a griottine cherry sauce",
+        "image": "https://i.postimg.cc/wvDfCmBV/salad-6.png",
+        "category": "salad",
+        "price": 16.5
+    },
+    {
+        "name": "Fish Parmentier",
+        "recipe": "Sautéed breaded veal escalope with watercress, lemon and veal jus.",
+        "image": "https://i.postimg.cc/hhWL8ynb/soup-6.png",
+        "category": "soup",
+        "price": 9.5
+    },
+    {
+        "name": "Coffee lait",
+        "recipe": "Chargrilled fresh tuna steak (served medium rare) on classic Niçoise salad with French beans.",
+        "image": "https://i.postimg.cc/rpq5VZM7/coffee-8.png",
+        "category": "coffee",
+        "price": 14.7
+    },
+    {
+        "name": "Goats Cheese Pizza",
+        "recipe": "Roasted duck breast (served pink) with gratin potato and a griottine cherry sauce",
+        "image": "https://i.postimg.cc/QNJ6pFN7/pizzas-png.png",
+        "category": "popular",
+        "price": 16.5
+    }
+]
