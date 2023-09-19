@@ -22,11 +22,18 @@ const client = new MongoClient(uri, {
 async function run() {
   try {
     const menuCollection = client.db('bistroBossRestaurant').collection('menu');
+    const reviewsCollection = client.db('bistroBossRestaurant').collection('review');
 
     app.get('/menu', async (req, res) => {
       const query = {};
       const menu = await menuCollection.find(query).toArray();
       res.send(menu);
+    });
+
+    app.get('/reviews', async (req, res) => {
+      const query = {};
+      const reviews = await reviewsCollection.find(query).toArray();
+      res.send(reviews);
     });
 
 
