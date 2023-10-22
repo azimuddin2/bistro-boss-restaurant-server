@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const jwt = require('jsonwebtoken');
 require('dotenv').config();
 const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
 const app = express();
@@ -19,12 +20,40 @@ const client = new MongoClient(uri, {
   }
 });
 
+
+const verifyJWT = (req, res, next) => {
+  const authorization = req.headers.authorization;
+  if (!authorization) {
+    return res.status(401).send({ error: true, message: 'unauthorized access' });
+  }
+
+  const token = authorization.split(' ')[1];
+
+  jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, decoded) => {
+    if (err) {
+      return res.status(401).send({ error: true, message: 'unauthorized access' });
+    }
+    req.decoded = decoded;
+    next();
+  })
+
+};
+
+
 async function run() {
   try {
     const usersCollection = client.db('bistroBossRestaurant').collection('users');
     const menuCollection = client.db('bistroBossRestaurant').collection('menu');
     const reviewsCollection = client.db('bistroBossRestaurant').collection('review');
     const cartCollection = client.db('bistroBossRestaurant').collection('carts');
+
+
+    app.post('/jwt', (req, res) => {
+      const user = req.body;
+      const token = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '1h' });
+      res.send({ token });
+    });
+
 
     // users operations
     app.post('/users', async (req, res) => {
@@ -88,11 +117,17 @@ async function run() {
       res.send(result);
     });
 
-    app.get('/carts', async (req, res) => {
+    app.get('/carts', verifyJWT, async (req, res) => {
       const email = req.query.email;
       if (!email) {
         res.send([]);
       }
+
+      const decodedEmail = req.decoded.email;
+      if (email !== decodedEmail) {
+        return res.status(403).send({ error: true, message: 'porviden access' });
+      }
+
       const query = { email: email };
       const result = await cartCollection.find(query).toArray();
       res.send(result);
