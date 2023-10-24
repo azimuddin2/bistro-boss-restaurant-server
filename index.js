@@ -10,16 +10,6 @@ const port = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
-// database connection
-const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.qmrysfz.mongodb.net/?retryWrites=true&w=majority`;
-const client = new MongoClient(uri, {
-  serverApi: {
-    version: ServerApiVersion.v1,
-    strict: true,
-    deprecationErrors: true,
-  }
-});
-
 
 const verifyJWT = (req, res, next) => {
   const authorization = req.headers.authorization;
@@ -40,6 +30,16 @@ const verifyJWT = (req, res, next) => {
 };
 
 
+// database connection
+const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.qmrysfz.mongodb.net/?retryWrites=true&w=majority`;
+const client = new MongoClient(uri, {
+  serverApi: {
+    version: ServerApiVersion.v1,
+    strict: true,
+    deprecationErrors: true,
+  }
+});
+
 async function run() {
   try {
     const usersCollection = client.db('bistroBossRestaurant').collection('users');
@@ -47,6 +47,16 @@ async function run() {
     const reviewsCollection = client.db('bistroBossRestaurant').collection('review');
     const cartCollection = client.db('bistroBossRestaurant').collection('carts');
 
+    const verifyAdmin = async (req, res, next) => {
+      const email = req.decoded.email;
+      const query = { email: email };
+      const user = await usersCollection.findOne(query);
+
+      if (user?.role !== 'admin') {
+        return res.status(403).send({ error: true, message: 'forbidden message' });
+      }
+      next();
+    }
 
     app.post('/jwt', (req, res) => {
       const user = req.body;
@@ -55,7 +65,7 @@ async function run() {
     });
 
 
-    // users operations
+    // users API operations
     app.post('/users', async (req, res) => {
       const user = req.body;
 
@@ -69,10 +79,24 @@ async function run() {
       res.send(result);
     });
 
-    app.get('/users', async (req, res) => {
+    app.get('/users', verifyJWT, verifyAdmin, async (req, res) => {
       const query = {};
       const users = await usersCollection.find(query).toArray();
       res.send(users);
+    });
+
+    app.get('/users/admin/:email', verifyJWT, async (req, res) => {
+      const email = req.params.email;
+      const decodedEmail = req.decoded.email;
+
+      if (decodedEmail !== email) {
+        res.send({ admin: false });
+      }
+
+      const query = { email: email };
+      const user = await usersCollection.findOne(query);
+      const result = { admin: user?.role === 'admin' };
+      res.send(result);
     });
 
     app.patch('/users/admin/:id', async (req, res) => {
@@ -94,6 +118,7 @@ async function run() {
       const result = await usersCollection.deleteOne(query);
       res.send(result);
     });
+
 
 
     // menu operation
@@ -125,7 +150,7 @@ async function run() {
 
       const decodedEmail = req.decoded.email;
       if (email !== decodedEmail) {
-        return res.status(403).send({ error: true, message: 'porviden access' });
+        return res.status(403).send({ error: true, message: 'forbidden access' });
       }
 
       const query = { email: email };
