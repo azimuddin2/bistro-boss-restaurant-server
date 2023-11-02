@@ -60,7 +60,7 @@ async function run() {
 
     app.post('/jwt', (req, res) => {
       const user = req.body;
-      const token = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '1h' });
+      const token = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '7d' });
       res.send({ token });
     });
 
@@ -121,11 +121,24 @@ async function run() {
 
 
 
-    // menu operation
+    // menu API operation
     app.get('/menu', async (req, res) => {
       const query = {};
       const menu = await menuCollection.find(query).toArray();
       res.send(menu);
+    });
+
+    app.post('/menu', verifyJWT, verifyAdmin, async (req, res) => {
+      const addNewItem = req.body;
+      const result = await menuCollection.insertOne(addNewItem);
+      res.send(result);
+    });
+
+    app.delete('/menu/:id', verifyJWT, verifyAdmin, async (req, res) => {
+      const id = req.params.id;
+      const query = { _id: new ObjectId(id) };
+      const result = await menuCollection.deleteOne(query);
+      res.send(result);
     });
 
     // review operations
