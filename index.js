@@ -128,6 +128,13 @@ async function run() {
       res.send(menu);
     });
 
+    app.get('/menu/:id', async (req, res) => {
+      const id = req.params.id;
+      const query = { _id: new ObjectId(id) };
+      const result = await menuCollection.findOne(query);
+      res.send(result);
+    });
+
     app.post('/menu', verifyJWT, verifyAdmin, async (req, res) => {
       const addNewItem = req.body;
       const result = await menuCollection.insertOne(addNewItem);
@@ -140,6 +147,26 @@ async function run() {
       const result = await menuCollection.deleteOne(query);
       res.send(result);
     });
+
+    app.put('/menu/:id', verifyJWT, verifyAdmin,  async (req, res) => {
+      const id = req.params.id;
+      const filter = { _id: new ObjectId(id) };
+
+      const updateItem = req.body;
+      const { name, price, recipe } = updateItem;
+
+      const options = { upsert: true };
+      const updateDoc = {
+        $set: {
+          name,
+          price,
+          recipe
+        },
+      };
+      const result = await menuCollection.updateOne(filter, updateDoc, options);
+      res.send(result);
+    });
+
 
     // review operations
     app.get('/reviews', async (req, res) => {
