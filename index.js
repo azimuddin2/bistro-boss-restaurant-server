@@ -47,6 +47,7 @@ async function run() {
     const menuCollection = client.db('bistroBossRestaurant').collection('menu');
     const reviewsCollection = client.db('bistroBossRestaurant').collection('review');
     const cartCollection = client.db('bistroBossRestaurant').collection('carts');
+    const paymentCollection = client.db('bistroBossRestaurant').collection('payments');
 
     const verifyAdmin = async (req, res, next) => {
       const email = req.decoded.email;
@@ -218,6 +219,28 @@ async function run() {
       res.send({
         clientSecret: paymentIntent.client_secret
       });
+    });
+
+    // payment related api
+    app.post('/payments', verifyJWT, async (req, res) => {
+      const paymentInfo = req.body;
+      const insertResult = await paymentCollection.insertOne(paymentInfo);
+
+      const query = { _id: { $in: paymentInfo.cartItems.map(id => new ObjectId(id)) } };
+      const deleteResult = await cartCollection.deleteMany(query);
+
+      res.send({ insertResult, deleteResult });
+    });
+
+    app.get('/payments', verifyJWT, async (req, res) => {
+      const email = req.query.email;
+      if (!email) {
+        res.send([]);
+      }
+
+      const query = { email: email };
+      const payments = await paymentCollection.find(query).toArray();
+      res.send(payments)
     });
 
 
