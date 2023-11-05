@@ -48,6 +48,7 @@ async function run() {
     const reviewsCollection = client.db('bistroBossRestaurant').collection('review');
     const cartCollection = client.db('bistroBossRestaurant').collection('carts');
     const paymentCollection = client.db('bistroBossRestaurant').collection('payments');
+    const bookingCollection = client.db('bistroBossRestaurant').collection('bookings');
 
     const verifyAdmin = async (req, res, next) => {
       const email = req.decoded.email;
@@ -241,6 +242,14 @@ async function run() {
       const query = { email: email };
       const payments = await paymentCollection.find(query).toArray();
       res.send(payments)
+    });
+
+
+    // booking related api
+    app.post('/bookings', async (req, res) => {
+      const bookingInfo = req.body;
+      const result = await bookingCollection.insertOne(bookingInfo);
+      res.send(result);
     });
 
 
