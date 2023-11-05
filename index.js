@@ -252,6 +252,23 @@ async function run() {
       res.send(result);
     });
 
+    app.get('/bookings', async (req, res) => {
+      const query = {};
+      const bookings = await bookingCollection.find(query).toArray();
+      res.send(bookings);
+    });
+
+    app.get('/bookings', async (req, res) => {
+      const email = req.query.email;
+      if (!email) {
+        res.send([]);
+      }
+
+      const query = { email: email };
+      const bookings = await paymentCollection.find(query).toArray();
+      res.send(bookings);
+    });
+
 
   } finally {
 
