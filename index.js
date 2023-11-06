@@ -246,19 +246,19 @@ async function run() {
 
 
     // booking related api
-    app.post('/bookings', async (req, res) => {
+    app.post('/bookings', verifyJWT, async (req, res) => {
       const bookingInfo = req.body;
       const result = await bookingCollection.insertOne(bookingInfo);
       res.send(result);
     });
 
-    app.get('/bookings', async (req, res) => {
+    app.get('/bookings', verifyJWT, async (req, res) => {
       const query = {};
       const bookings = await bookingCollection.find(query).toArray();
       res.send(bookings);
     });
 
-    app.get('/bookings', async (req, res) => {
+    app.get('/bookings', verifyJWT, async (req, res) => {
       const email = req.query.email;
       if (!email) {
         res.send([]);
