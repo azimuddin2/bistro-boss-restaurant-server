@@ -171,13 +171,6 @@ async function run() {
     });
 
 
-    // review operations
-    app.get('/reviews', async (req, res) => {
-      const query = {};
-      const reviews = await reviewsCollection.find(query).toArray();
-      res.send(reviews);
-    });
-
     // cart operations
     app.post('/carts', async (req, res) => {
       const item = req.body;
@@ -267,6 +260,19 @@ async function run() {
       const query = { email: email };
       const bookings = await paymentCollection.find(query).toArray();
       res.send(bookings);
+    });
+
+    // review operations
+    app.get('/reviews', async (req, res) => {
+      const query = {};
+      const reviews = await reviewsCollection.find(query).toArray();
+      res.send(reviews);
+    });
+
+    app.post('/reviews', async (req, res) => {
+      const reviewInfo = req.body;
+      const result = await reviewsCollection.insertOne(reviewInfo);
+      res.send(result);
     });
 
 
