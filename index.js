@@ -215,6 +215,7 @@ async function run() {
       });
     });
 
+
     // payment related api
     app.post('/payments', verifyJWT, async (req, res) => {
       const paymentInfo = req.body;
@@ -245,7 +246,7 @@ async function run() {
       res.send(result);
     });
 
-    app.get('/bookings', verifyJWT, async (req, res) => {
+    app.get('/all-bookings', verifyJWT, verifyAdmin, async (req, res) => {
       const query = {};
       const bookings = await bookingCollection.find(query).toArray();
       res.send(bookings);
@@ -258,9 +259,10 @@ async function run() {
       }
 
       const query = { email: email };
-      const bookings = await paymentCollection.find(query).toArray();
+      const bookings = await bookingCollection.find(query).toArray();
       res.send(bookings);
     });
+
 
     // review operations
     app.get('/reviews', async (req, res) => {
