@@ -246,12 +246,6 @@ async function run() {
       res.send(result);
     });
 
-    app.get('/all-bookings', verifyJWT, verifyAdmin, async (req, res) => {
-      const query = {};
-      const bookings = await bookingCollection.find(query).toArray();
-      res.send(bookings);
-    });
-
     app.get('/bookings', verifyJWT, async (req, res) => {
       const email = req.query.email;
       if (!email) {
@@ -259,6 +253,12 @@ async function run() {
       }
 
       const query = { email: email };
+      const bookings = await bookingCollection.find(query).toArray();
+      res.send(bookings);
+    });
+
+    app.get('/all-bookings', verifyJWT, verifyAdmin, async (req, res) => {
+      const query = {};
       const bookings = await bookingCollection.find(query).toArray();
       res.send(bookings);
     });
