@@ -263,6 +263,20 @@ async function run() {
       res.send(bookings);
     });
 
+    app.patch('/bookings/:id', async (req, res) => {
+      const id = req.params.id;
+      const status = req.body.status;
+      const filter = { _id: new ObjectId(id) };
+
+      const updateDoc = {
+        $set: {
+          status: status
+        }
+      }
+      const result = await bookingCollection.updateOne(filter, updateDoc);
+      res.send(result);
+    });
+
 
     // review operations
     app.get('/reviews', async (req, res) => {
