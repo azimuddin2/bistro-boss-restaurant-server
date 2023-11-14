@@ -291,6 +291,21 @@ async function run() {
       res.send(result);
     });
 
+    app.get('/user-stats', async (req, res) => {
+      const email = req.query.email;
+      const query = { email: email };
+
+      const bookings = await bookingCollection.countDocuments(query);
+      const payment = await paymentCollection.countDocuments(query);
+      const review = await reviewsCollection.countDocuments(query);
+
+      res.send({
+        bookings,
+        payment,
+        // review,
+      });
+
+    });
 
     app.get('/admin-stats', verifyJWT, verifyAdmin, async (req, res) => {
       const users = await usersCollection.estimatedDocumentCount();
