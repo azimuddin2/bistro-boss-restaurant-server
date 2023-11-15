@@ -285,24 +285,32 @@ async function run() {
       res.send(reviews);
     });
 
-    app.post('/reviews', async (req, res) => {
+    app.post('/reviews', verifyJWT, async (req, res) => {
       const reviewInfo = req.body;
       const result = await reviewsCollection.insertOne(reviewInfo);
       res.send(result);
     });
 
-    app.get('/user-stats', async (req, res) => {
+    app.get('/user-stats', verifyJWT, async (req, res) => {
       const email = req.query.email;
+      if (!email) {
+        res.send([]);
+      }
+
       const query = { email: email };
 
-      const bookings = await bookingCollection.countDocuments(query);
+      const booking = await bookingCollection.countDocuments(query);
       const payment = await paymentCollection.countDocuments(query);
       const review = await reviewsCollection.countDocuments(query);
 
+      const totalAmount = await paymentCollection.find(query).toArray();
+      const revenue = totalAmount.reduce((sum, payment) => sum + payment.price, 0);
+
       res.send({
-        bookings,
+        revenue,
+        booking,
         payment,
-        // review,
+        review,
       });
 
     });
