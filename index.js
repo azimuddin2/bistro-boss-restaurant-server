@@ -82,6 +82,24 @@ async function run() {
       res.send(result);
     });
 
+    app.put('/users', verifyJWT, async (req, res) => {
+      const updateInfo = req.body;
+      const { imgURL, name, email, phone } = updateInfo;
+
+      const filter = { email: email };
+      const options = { upsert: true };
+
+      const updateDoc = {
+        $set: {
+          image: imgURL,
+          name,
+          phone
+        }
+      };
+      const result = await usersCollection.updateOne(filter, updateDoc, options);
+      res.send(result);
+    });
+
     app.get('/users', verifyJWT, verifyAdmin, async (req, res) => {
       const query = {};
       const users = await usersCollection.find(query).toArray();
@@ -332,7 +350,7 @@ async function run() {
     });
 
     app.get('/order-stats', async (req, res) => {
-      const pipeline = [
+      const result = await paymentCollection.aggregate([
         {
           $lookup: {
             from: 'menu',
@@ -359,9 +377,9 @@ async function run() {
             _id: 0
           }
         }
-      ];
 
-      const result = await paymentCollection.aggregate(pipeline).toArray();
+      ]).toArray();
+
       res.send(result);
     });
 
