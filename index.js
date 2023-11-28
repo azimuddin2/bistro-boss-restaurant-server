@@ -156,6 +156,21 @@ async function run() {
       res.send(result);
     });
 
+    app.get('/totalMenus', verifyJWT, verifyAdmin, async (req, res) => {
+      const result = await menuCollection.estimatedDocumentCount();
+      res.send({ totalMenus: result });
+    });
+
+    app.get('/all-menus', verifyJWT, verifyAdmin, async (req, res) => {
+      console.log(req.query);
+      const page = parseInt(req.query.page) || 0;
+      const limit = parseInt(req.query.limit) || 6;
+      const skip = page * limit;
+
+      const result = await menuCollection.find().skip(skip).limit(limit).toArray();
+      res.send(result);
+    });
+
     app.post('/menu', verifyJWT, verifyAdmin, async (req, res) => {
       const addNewItem = req.body;
       const result = await menuCollection.insertOne(addNewItem);
