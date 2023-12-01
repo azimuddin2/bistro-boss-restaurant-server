@@ -156,13 +156,13 @@ async function run() {
       res.send(result);
     });
 
-    app.get('/totalMenus', verifyJWT, verifyAdmin, async (req, res) => {
+    app.get('/totalMenus', async (req, res) => {
       const result = await menuCollection.estimatedDocumentCount();
       res.send({ totalMenus: result });
     });
 
     app.get('/all-menus', verifyJWT, verifyAdmin, async (req, res) => {
-      console.log(req.query);
+
       const page = parseInt(req.query.page) || 0;
       const limit = parseInt(req.query.limit) || 6;
       const skip = page * limit;
@@ -290,10 +290,27 @@ async function run() {
       res.send(bookings);
     });
 
+    app.get('/totalBookings', async (req, res) => {
+      const result = await bookingCollection.estimatedDocumentCount();
+      res.send({ totalBookings: result });
+    });
+
     app.get('/all-bookings', verifyJWT, verifyAdmin, async (req, res) => {
-      const query = {};
-      const bookings = await bookingCollection.find(query).toArray();
-      res.send(bookings);
+      const page = parseInt(req.query.page) || 0;
+      const limit = parseInt(req.query.limit) || 4;
+      const skip = page * limit;
+
+      const search = req.query.search;
+      let cursor;
+      if (search) {
+        cursor = bookingCollection.find({ name: { $regex: search, $options: 'i' } });
+      }
+      else {
+        cursor = bookingCollection.find();
+      }
+
+      const result = await cursor.skip(skip).limit(limit).toArray();
+      res.send(result);
     });
 
     app.patch('/bookings/:id', async (req, res) => {
