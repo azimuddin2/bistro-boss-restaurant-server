@@ -101,9 +101,17 @@ async function run() {
     });
 
     app.get('/users', verifyJWT, verifyAdmin, async (req, res) => {
-      const query = {};
-      const users = await usersCollection.find(query).toArray();
-      res.send(users);
+      const query = req.query.search;
+      let cursor;
+
+      if (query) {
+        cursor = usersCollection.find({ name: { $regex: query, $options: 'i' } });
+      } else {
+        cursor = usersCollection.find();
+      }
+
+      const result = await cursor.toArray();
+      res.send(result);
     });
 
     app.get('/users/admin/:email', verifyJWT, async (req, res) => {
@@ -297,7 +305,7 @@ async function run() {
 
     app.get('/all-bookings', verifyJWT, verifyAdmin, async (req, res) => {
       const page = parseInt(req.query.page) || 0;
-      const limit = parseInt(req.query.limit) || 4;
+      const limit = parseInt(req.query.limit) || 6;
       const skip = page * limit;
 
       const search = req.query.search;
