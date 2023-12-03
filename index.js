@@ -377,6 +377,8 @@ async function run() {
       const users = await usersCollection.estimatedDocumentCount();
       const menuItems = await menuCollection.estimatedDocumentCount();
       const orders = await paymentCollection.estimatedDocumentCount();
+      const bookings = await bookingCollection.estimatedDocumentCount();
+      const reviews = await reviewsCollection.estimatedDocumentCount();
 
       const payments = await paymentCollection.find().toArray();
       const revenue = payments.reduce((sum, payment) => sum + payment.price, 0);
@@ -385,7 +387,9 @@ async function run() {
         revenue,
         users,
         menuItems,
-        orders
+        orders,
+        bookings,
+        reviews
       });
     });
 
